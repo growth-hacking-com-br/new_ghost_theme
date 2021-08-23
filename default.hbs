@@ -11,6 +11,8 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    {{!-- ADDING TOC CSS - TEST --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.13.1/tocbot.css" integrity="sha512-2kqK5bWDwdrluTn6Wkj+jgiwyzvAHLirVp08Kz7kN5I8PWQ0tUtEMxfhyWDCrnws91BJ9PfrUy6ImfA7Qb22TA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{!-- Styles'n'Scripts --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
@@ -146,6 +148,17 @@
             $('body').click(function () {
                 $('.account-menu-avatar').removeClass('active');
             });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.13.1/tocbot.min.js"></script>
+
+    {{!-- ADDING TOC JS - TEST --}}
+    <script>
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.post-content',
+            hasInnerContainers: true
         });
     </script>
 
