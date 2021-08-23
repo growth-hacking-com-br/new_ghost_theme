@@ -1,19 +1,12 @@
 {{!--
-
-There are two error files in this theme, one for 404s and one for all other errors.
-This file is the latter, and handle all 400/500 errors that might occur.
-
-Because 500 errors in particular usuall happen when a server is struggling, this
-template is as simple as possible. No template dependencies, no JS, no API calls.
-This is to prevent rendering the error-page itself compounding the issue causing
-the error in the first place.
-
-Keep this template as lightweight as you can!
-
+This error template is used for all 400/500 errors, except 404, which might occur on your site.
+It's a good idea to keep this template as minimal as possible in terms of both file size and complexity.
+You'll notice that we *don't* use any JavaScript, or ghost_head / ghost_foot in this file.
 --}}
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,6 +15,7 @@ Keep this template as lightweight as you can!
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 </head>
+
 <body>
     <div class="site-wrapper">
 
@@ -40,7 +34,7 @@ Keep this template as lightweight as you can!
             </div>
         </header>
 
-        <main class="outer error-content">
+        <main id="site-main" class="site-main outer error-content">
             <div class="inner">
 
                 <section class="error-message">
@@ -54,14 +48,14 @@ Keep this template as lightweight as you can!
                     <h3>Theme errors</h3>
                     <ul class="error-stack-list">
                         {{#foreach errorDetails}}
-                            <li>
-                                <em class="error-stack-function">{{{rule}}}</em>
+                        <li>
+                            <em class="error-stack-function">{{{rule}}}</em>
 
-                                {{#foreach failures}}
-                                    <p><span class="error-stack-file">Ref: {{ref}}</span></p>
-                                    <p><span class="error-stack-file">Message: {{message}}</span></p>
-                                {{/foreach}}
-                            </li>
+                            {{#foreach failures}}
+                            <p><span class="error-stack-file">Ref: {{ref}}</span></p>
+                            <p><span class="error-stack-file">Message: {{message}}</span></p>
+                            {{/foreach}}
+                        </li>
                         {{/foreach}}
                     </ul>
                 </section>
@@ -71,4 +65,5 @@ Keep this template as lightweight as you can!
         </main>
     </div>
 </body>
+
 </html>

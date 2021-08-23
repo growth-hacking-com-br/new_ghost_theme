@@ -1,24 +1,13 @@
-{{!--
-  This template renders the navigation menus.
---}}
-
 {{#if isSecondary}}
-  {{#foreach navigation}}
-    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
-      <a href="{{url absolute="true"}}">
-        <span>{{label}}</span>
-      </a>
-    </li>
-  {{/foreach}}
+    {{!-- secondary navigation --}}
+        {{#foreach navigation}}
+            <a class="{{link_class for=(url) class=(concat "nav-" slug)}}" href="{{url absolute="true"}}">{{label}}</a>
+        {{/foreach}}
 {{else}}
-  {{#foreach navigation}}
-    <li>
-      <a
-        href="{{url absolute="true"}}"
-        class="nav-{{slug}}{{#if current}} nav-current{{/if}}"
-      >
-        <span>{{label}}</span>
-      </a>
-    </li>
-  {{/foreach}}
+    {{!-- primary navigation --}}
+    <ul class="nav">
+        {{#foreach navigation}}
+            <li class="{{link_class for=(url) class=(concat "nav-" slug)}}"><a href="{{url absolute="true"}}">{{label}}</a></li>
+        {{/foreach}}
+    </ul>
 {{/if}}
